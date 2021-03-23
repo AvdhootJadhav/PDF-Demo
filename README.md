@@ -1,4 +1,4 @@
-# sample
+# PDF-Demo
 
 A new Flutter project.
 
@@ -14,3 +14,9 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+Steps:
+- First fork this repo in your github account
+- Then open the project and go to pubspec.yaml file
+- Now install all the dependencies and import package
+- Finally, run the project to check the pdf
