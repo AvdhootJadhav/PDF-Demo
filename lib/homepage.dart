@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -12,19 +13,30 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final head = ["Item","Price","Quantity"];
-  final list = ['Ice Cream', '100', '1'];
   final list1 = [Orders(item: "Ice Cream", price: "20",quantity: "1"),
   Orders(item: "Noodles",price: "10",quantity: "1",), Orders(item: "Cake", price: "200",quantity: "1"),
   ];
   final doc = pw.Document();
   String path="";
 
-  buildpdf(){
+  buildpdf()async{
+    final profileImage = pw.MemoryImage((await rootBundle.load('assets/images/undraw_eating_together_tjhx.png'))
+    .buffer.asUint8List(),);
     doc.addPage(
       pw.MultiPage(
         pageFormat: PdfPageFormat.a4,
         margin: pw.EdgeInsets.all(32),
         build: (pw.Context context)=><pw.Widget>[
+          pw.Row(
+            mainAxisAlignment: pw.MainAxisAlignment.end,
+            children: [
+              pw.Container(
+                height: 100,
+                width: 400,
+                child: pw.Image.provider(profileImage),
+              ),
+            ],
+          ),
           pw.Header(
             child: pw.Text("Table"),
             level: 0,  
